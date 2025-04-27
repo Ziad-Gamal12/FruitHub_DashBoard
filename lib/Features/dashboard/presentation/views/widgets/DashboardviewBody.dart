@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/CustomButton.dart';
 import 'package:fruits_hub_dashboard/Features/Products/presentation/views/addProductView.dart';
+import 'package:fruits_hub_dashboard/Features/orders/presentation/views/OrdersView.dart';
 
 class DashboardviewBody extends StatelessWidget {
   const DashboardviewBody({super.key});
@@ -15,7 +16,15 @@ class DashboardviewBody extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed(Addproductview.routeName);
               },
-              text: "add product")
+              text: "Add Product"),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Ordersview.routeName);
+              },
+              text: "Orders"),
         ],
       ),
     );

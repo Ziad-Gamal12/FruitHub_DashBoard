@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Supabasestorageservices implements StorageServices {
-  static const fruitsImagesBucketname = "fruits_images";
+  static const fruitsImagesBucketname = "fruitsimages";
   static late Supabase supabase;
   static initSupabase() async {
     supabase = await Supabase.initialize(
