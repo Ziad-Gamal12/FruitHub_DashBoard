@@ -8,14 +8,16 @@ class Customexpansionwidget extends StatelessWidget {
       {super.key,
       required this.child,
       required this.title,
+      this.isExpanded = false,
       this.leadingWidget});
   final Widget child;
   final String title;
   Widget? leadingWidget;
+  bool isExpanded;
   @override
   Widget build(BuildContext context) {
     return ExpansionWidget(
-      initiallyExpanded: false,
+      initiallyExpanded: isExpanded,
       titleBuilder: (animationValue, easeInValue, isExpanded, toggleFunction) {
         return InkWell(
           onTap: () => toggleFunction(animated: true),

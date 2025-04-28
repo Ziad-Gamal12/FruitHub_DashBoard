@@ -6,14 +6,13 @@ import 'package:fruits_hub_dashboard/Features/orders/presentation/views/widgets/
 import 'package:fruits_hub_dashboard/Features/orders/presentation/views/widgets/OrderItemOrderInfo.dart';
 
 class OrderListViewOrderItem extends StatelessWidget {
-  const OrderListViewOrderItem({
-    super.key,
-  });
-
+  const OrderListViewOrderItem({super.key, required this.inExpanded});
+  final bool inExpanded;
   @override
   Widget build(BuildContext context) {
     return Customexpansionwidget(
       title: "Order #2532545151321",
+      isExpanded: inExpanded,
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           decoration: BoxDecoration(
