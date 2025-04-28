@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/CustomExpansionWidget.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/rowInfo.dart';
 
@@ -11,6 +12,10 @@ class CustomOrderItemOrderDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Customexpansionwidget(
       title: "Order Details",
+      leadingWidget: const Icon(
+        FontAwesomeIcons.receipt,
+        color: Colors.green,
+      ),
       child: Column(
         children: [
           Rowinfo(

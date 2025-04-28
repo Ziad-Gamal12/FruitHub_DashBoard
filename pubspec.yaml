@@ -41,6 +41,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.10+1
+  font_awesome_flutter: ^10.8.0
   get_it: ^8.0.0
   icloud_storage: ^2.2.0
   image_picker: ^1.1.2

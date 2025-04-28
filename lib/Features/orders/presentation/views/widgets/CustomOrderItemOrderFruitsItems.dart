@@ -6,12 +6,22 @@ class Customorderitemorderfruitsitems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Wrap(spacing: 10, runSpacing: 10, children: [
-      CustomOrderIteFruitItem(
-        imageUrl:
-            "https://firebasestorage.googleapis.com/v0/b/fruithub-973f6.appspot.com/o/bestSellerItem_test2.png?alt=media&token=e46ab999-ce2f-46be-ab4a-6f50671db7af",
-        quantaty: "5",
-      )
-    ]);
+    return const IntrinsicHeight(
+      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        CustomOrderIteFruitItem(
+          imageUrl:
+              "https://firebasestorage.googleapis.com/v0/b/fruithub-973f6.appspot.com/o/bestSellerItem_test2.png?alt=media&token=e46ab999-ce2f-46be-ab4a-6f50671db7af",
+          quantaty: "5",
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        CustomOrderIteFruitItem(
+          imageUrl:
+              "https://firebasestorage.googleapis.com/v0/b/fruithub-973f6.appspot.com/o/bestSellerItem_test2.png?alt=media&token=e46ab999-ce2f-46be-ab4a-6f50671db7af",
+          quantaty: "5",
+        )
+      ]),
+    );
   }
 }
