@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/CustomExpansionWidget.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/rowInfo.dart';
+import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
+import 'package:provider/provider.dart';
 
 class CustomOrderItemOrderDetails extends StatelessWidget {
   const CustomOrderItemOrderDetails({
@@ -10,6 +12,8 @@ class CustomOrderItemOrderDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderEntity order = context.read<OrderEntity>();
+
     return Customexpansionwidget(
       title: "Order Details",
       leadingWidget: const Icon(
@@ -21,19 +25,23 @@ class CustomOrderItemOrderDetails extends StatelessWidget {
           Rowinfo(
             title: "Total Price",
             isSpaced: true,
-            value: "800\$",
+            value:
+                "${order.orderProducts.map((e) => e.price).reduce((value, element) => value + element)}\$",
           ),
           const SizedBox(
             height: 4,
           ),
-          Rowinfo(title: "Items", value: "5 items", isSpaced: true),
+          Rowinfo(
+              title: "Items",
+              value: "${order.orderProducts.length} items",
+              isSpaced: true),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "Payment Method",
             isSpaced: true,
-            value: "Cash on Delivery",
+            value: order.paymentMethod,
           ),
         ],
       ),

@@ -2,7 +2,9 @@
 
 class Orderproductentity {
   final String code, imageUrl, name;
-  final int price, quantity;
+  final double price;
+
+  final int quantity;
 
   Orderproductentity(
       {required this.code,

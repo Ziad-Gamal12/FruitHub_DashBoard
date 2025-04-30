@@ -2,7 +2,9 @@ import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderProduc
 
 class OrderProductModel {
   final String code, imageUrl, name;
-  final int price, quantity;
+  final double price;
+
+  final int quantity;
 
   OrderProductModel(
       {required this.code,

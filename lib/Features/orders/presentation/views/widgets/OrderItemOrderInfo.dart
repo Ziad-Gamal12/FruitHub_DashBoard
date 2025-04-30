@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/rowInfo.dart';
+import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
+import 'package:provider/provider.dart';
 
 class OrderItemOrderInfo extends StatelessWidget {
   const OrderItemOrderInfo({
@@ -8,19 +10,23 @@ class OrderItemOrderInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderEntity order = context.read<OrderEntity>();
     return Column(
       children: [
         Row(
           children: [
-            Rowinfo(title: "ID", value: "2532545151321"),
+            Rowinfo(title: "ID", value: order.orderId),
             const Spacer(),
-            Rowinfo(title: "Status", value: "Pending"),
+            Rowinfo(title: "Status", value: order.orderStatus),
           ],
         ),
         const SizedBox(
           height: 4,
         ),
-        Rowinfo(title: "Created At", value: "01/01/2023"),
+        Rowinfo(
+            title: "Created At",
+            value:
+                "${order.createdAt.day}/${order.createdAt.month}/${order.createdAt.year}"),
       ],
     );
   }

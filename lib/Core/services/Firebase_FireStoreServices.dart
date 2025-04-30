@@ -97,22 +97,7 @@ class FirebaseFirestoreservices implements Cloudstoreservices {
           return docSnapshot.data();
         }
       } else {
-        Query queryData = currentCollection;
-        if (query != null) {
-          if (query["status"] != null) {
-            queryData = queryData.where("status", isEqualTo: query["status"]);
-          }
-          if (query["id"] != null) {
-            queryData = queryData.where("id", isEqualTo: query["id"]);
-          }
-          if (query["title"] != null) {
-            queryData = queryData.where("title", isEqualTo: query["title"]);
-          }
-          if (query["orderBy"] != null) {
-            queryData = queryData.orderBy(query["orderBy"], descending: true);
-          }
-        }
-        final querySnapshot = await queryData.get();
+        final querySnapshot = await currentCollection.get();
         return querySnapshot.docs.map((e) => e.data()).toList();
       }
     } on FirebaseException catch (e) {

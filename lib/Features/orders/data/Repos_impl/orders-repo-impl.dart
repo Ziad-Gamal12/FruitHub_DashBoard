@@ -12,7 +12,7 @@ class Ordersrepoimpl implements OrdersRepo {
   final Cloudstoreservices cloudstoreservices;
   Ordersrepoimpl({required this.cloudstoreservices});
   @override
-  Future<Either<Failures, List<OrderEntity>>> getRepos() async {
+  Future<Either<Failures, List<OrderEntity>>> getOrders() async {
     try {
       final List<Map<String, dynamic>> orders =
           await cloudstoreservices.getData(

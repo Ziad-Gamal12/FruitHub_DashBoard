@@ -8,10 +8,12 @@ class Customexpansionwidget extends StatelessWidget {
       {super.key,
       required this.child,
       required this.title,
+      this.titleStyle,
       this.isExpanded = false,
       this.leadingWidget});
   final Widget child;
   final String title;
+  TextStyle? titleStyle;
   Widget? leadingWidget;
   bool isExpanded;
   @override
@@ -29,9 +31,10 @@ class Customexpansionwidget extends StatelessWidget {
             child: ListTile(
               title: Text(
                 title,
-                style: textStyles.textstyle19.copyWith(
-                  color: Colors.black,
-                ),
+                style: titleStyle ??
+                    textStyles.textstyle19.copyWith(
+                      color: Colors.black,
+                    ),
               ),
               trailing: Transform.rotate(
                   angle: easeInValue * 3.14,

@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/CustomExpansionWidget.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/rowInfo.dart';
+import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
+import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderShippingEntity.dart';
+import 'package:provider/provider.dart';
 
 class CustomOrderItemOrderShipping extends StatelessWidget {
   const CustomOrderItemOrderShipping({super.key});
 
   @override
   Widget build(BuildContext context) {
+    OrderShippingEntity orderShippingEntity =
+        context.read<OrderEntity>().orderShippingEntity;
+
     return Customexpansionwidget(
         title: "Shipping",
         leadingWidget: const Icon(
@@ -17,42 +23,42 @@ class CustomOrderItemOrderShipping extends StatelessWidget {
         child: Column(children: [
           Rowinfo(
             title: "Full Name",
-            value: "Ahmed Ali",
+            value: orderShippingEntity.fullname,
           ),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "Email",
-            value: "RdY5s@example.com",
+            value: orderShippingEntity.email,
           ),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "Phone",
-            value: "0123456789",
+            value: orderShippingEntity.phoneNumber,
           ),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "Address",
-            value: "Cairo",
+            value: orderShippingEntity.address,
           ),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "City",
-            value: "Cairo",
+            value: orderShippingEntity.city,
           ),
           const SizedBox(
             height: 4,
           ),
           Rowinfo(
             title: "Flat Number",
-            value: "2",
+            value: orderShippingEntity.flat,
           ),
         ]));
   }

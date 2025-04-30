@@ -2,13 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/Core/Utils/get_it.dart';
 import 'package:fruits_hub_dashboard/Core/helper_funcition/OnGenrateRoute.dart';
-import 'package:fruits_hub_dashboard/Core/services/supabaseStorageServices.dart';
 import 'package:fruits_hub_dashboard/Features/dashboard/presentation/views/dashboardView.dart';
 import 'package:fruits_hub_dashboard/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabasestorageservices.initSupabase();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

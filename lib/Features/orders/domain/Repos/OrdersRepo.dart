@@ -5,5 +5,5 @@ import 'package:fruits_hub_dashboard/Core/errors/customFailure.dart';
 import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
 
 abstract class OrdersRepo {
-  Future<Either<Failures, List<OrderEntity>>> getRepos();
+  Future<Either<Failures, List<OrderEntity>>> getOrders();
 }
