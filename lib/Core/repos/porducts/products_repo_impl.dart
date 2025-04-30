@@ -23,7 +23,7 @@ class ProductsRepoImpl implements ProductsRepo {
           docid: productdata.code.toLowerCase());
 
       if (isProductExsists == false) {
-        await firebaseFireStoreServices.addProduct(
+        await firebaseFireStoreServices.addData(
             path: BackendEndpoints.addProduct,
             data: productdata.toMap(),
             docid: productdata.code.toLowerCase());
