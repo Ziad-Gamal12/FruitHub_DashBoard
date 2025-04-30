@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/fruit_item.dart';
 import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
 import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderProductEntity.dart';
@@ -18,9 +19,18 @@ class Customorderitemorderfruitsitems extends StatelessWidget {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: orderProducts
+                .asMap()
+                .entries
                 .map((e) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 6),
-                    child: fruit_item(product: e)))
+                    child: Animate(effects: [
+                      FadeEffect(duration: 500.ms),
+                      SlideEffect(
+                        begin: const Offset(0.1, 0),
+                        end: Offset.zero,
+                        delay: (100 * e.key).ms, // stagger animation
+                      ),
+                    ], child: fruit_item(product: e.value))))
                 .toList()),
       ),
     );

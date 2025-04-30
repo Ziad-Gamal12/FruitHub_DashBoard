@@ -12,7 +12,7 @@ class fruit_item extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 180,
-      height: 270,
+      height: 280,
       decoration: BoxDecoration(boxShadow: const [
         BoxShadow(
           color: Color.fromARGB(255, 207, 207, 207),
@@ -30,7 +30,7 @@ class fruit_item extends StatelessWidget {
               height: 20,
             ),
             Expanded(
-              flex: 3,
+              flex: 4,
               child: AspectRatio(
                 aspectRatio: 1,
                 child: CachedNetworkImage(

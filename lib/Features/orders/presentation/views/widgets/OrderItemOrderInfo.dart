@@ -13,13 +13,11 @@ class OrderItemOrderInfo extends StatelessWidget {
     OrderEntity order = context.read<OrderEntity>();
     return Column(
       children: [
-        Row(
-          children: [
-            Rowinfo(title: "ID", value: order.orderId),
-            const Spacer(),
-            Rowinfo(title: "Status", value: order.orderStatus),
-          ],
+        Rowinfo(title: "ID", value: order.orderId),
+        const SizedBox(
+          height: 4,
         ),
+        Rowinfo(title: "Status", value: order.orderStatus),
         const SizedBox(
           height: 4,
         ),
