@@ -9,15 +9,21 @@ import 'package:fruits_hub_dashboard/Features/orders/presentation/views/widgets/
 import 'package:fruits_hub_dashboard/Features/orders/presentation/views/widgets/OrderItemOrderInfo.dart';
 import 'package:provider/provider.dart';
 
-class OrderListViewOrderItem extends StatelessWidget {
+class OrderListViewOrderItem extends StatefulWidget {
   const OrderListViewOrderItem(
       {super.key, required this.inExpanded, required this.order});
   final bool inExpanded;
   final OrderEntity order;
+
+  @override
+  State<OrderListViewOrderItem> createState() => _OrderListViewOrderItemState();
+}
+
+class _OrderListViewOrderItemState extends State<OrderListViewOrderItem> {
   @override
   Widget build(BuildContext context) {
     return Provider.value(
-      value: order,
+      value: widget.order,
       child: Animate(
         effects: [
           SlideEffect(
@@ -30,8 +36,8 @@ class OrderListViewOrderItem extends StatelessWidget {
         ],
         child: Customexpansionwidget(
           titleStyle: textStyles.textstyle16.copyWith(color: Colors.black),
-          title: "#${order.orderId}",
-          isExpanded: inExpanded,
+          title: "#${widget.order.orderId}",
+          isExpanded: widget.inExpanded,
           child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               decoration: BoxDecoration(

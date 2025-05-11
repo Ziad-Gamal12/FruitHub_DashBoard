@@ -10,13 +10,13 @@ part 'get_orders_state.dart';
 class GetOrdersCubit extends Cubit<GetOrdersState> {
   final OrdersRepo ordersRepo;
   GetOrdersCubit({required this.ordersRepo}) : super(GetOrdersInitial());
-  void getOrders() async {
-    emit(GetOrdersLoading());
-    final result = await ordersRepo.getOrders();
-    result.fold((failure) {
-      emit(GetOrdersFailure(errmessage: failure.errmessage));
-    }, (orders) {
-      emit(GetOrdersSuccess(orders: orders));
-    });
+  updateOrderStatus(
+      {required String status, required OrderEntity order}) async {
+    emit(UpdateOrdersLoading());
+    final result =
+        await ordersRepo.updateOrderStatus(status: status, order: order);
+    result.fold(
+        (failure) => emit(UpdateOrdersFailure(errmessage: failure.errmessage)),
+        (success) => emit(UpdateOrdersSuccess()));
   }
 }

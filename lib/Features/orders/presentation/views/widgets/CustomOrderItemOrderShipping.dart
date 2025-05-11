@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/CustomExpansionWidget.dart';
 import 'package:fruits_hub_dashboard/Core/widgets/rowInfo.dart';
@@ -16,9 +17,19 @@ class CustomOrderItemOrderShipping extends StatelessWidget {
 
     return Customexpansionwidget(
         title: "Shipping",
-        leadingWidget: const Icon(
-          FontAwesomeIcons.truckFast,
-          color: Colors.green,
+        leadingWidget: Animate(
+          effects: [
+            SlideEffect(
+              begin: const Offset(-2, 0),
+              end: Offset.zero,
+              duration: 500.ms,
+              curve: Curves.easeOut,
+            )
+          ],
+          child: const Icon(
+            FontAwesomeIcons.truckFast,
+            color: Colors.green,
+          ),
         ),
         child: Column(children: [
           Rowinfo(

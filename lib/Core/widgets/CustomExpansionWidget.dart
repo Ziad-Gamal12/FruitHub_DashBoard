@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/Core/Utils/textStyles.dart';
 
 // ignore: must_be_immutable
-class Customexpansionwidget extends StatelessWidget {
+class Customexpansionwidget extends StatefulWidget {
   Customexpansionwidget(
       {super.key,
       required this.child,
@@ -16,10 +16,16 @@ class Customexpansionwidget extends StatelessWidget {
   TextStyle? titleStyle;
   Widget? leadingWidget;
   bool isExpanded;
+
+  @override
+  State<Customexpansionwidget> createState() => _CustomexpansionwidgetState();
+}
+
+class _CustomexpansionwidgetState extends State<Customexpansionwidget> {
   @override
   Widget build(BuildContext context) {
     return ExpansionWidget(
-      initiallyExpanded: isExpanded,
+      initiallyExpanded: widget.isExpanded,
       titleBuilder: (animationValue, easeInValue, isExpanded, toggleFunction) {
         return InkWell(
           onTap: () => toggleFunction(animated: true),
@@ -30,8 +36,8 @@ class Customexpansionwidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8)),
             child: ListTile(
               title: Text(
-                title,
-                style: titleStyle ??
+                widget.title,
+                style: widget.titleStyle ??
                     textStyles.textstyle19.copyWith(
                       color: Colors.black,
                     ),
@@ -42,12 +48,12 @@ class Customexpansionwidget extends StatelessWidget {
                     Icons.keyboard_arrow_down,
                     color: Colors.black,
                   )),
-              leading: leadingWidget,
+              leading: widget.leadingWidget,
             ),
           ),
         );
       },
-      content: child,
+      content: widget.child,
     );
   }
 }

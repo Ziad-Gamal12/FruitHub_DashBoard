@@ -17,7 +17,6 @@ void main() async {
 class FruitHubDashboard extends StatelessWidget {
   const FruitHubDashboard({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(

@@ -5,14 +5,11 @@ sealed class GetOrdersState {}
 
 final class GetOrdersInitial extends GetOrdersState {}
 
-final class GetOrdersLoading extends GetOrdersState {}
+final class UpdateOrdersLoading extends GetOrdersState {}
 
-final class GetOrdersSuccess extends GetOrdersState {
-  final List<OrderEntity> orders;
-  GetOrdersSuccess({required this.orders});
-}
+final class UpdateOrdersSuccess extends GetOrdersState {}
 
-final class GetOrdersFailure extends GetOrdersState {
+final class UpdateOrdersFailure extends GetOrdersState {
   final String errmessage;
-  GetOrdersFailure({required this.errmessage});
+  UpdateOrdersFailure({required this.errmessage});
 }

@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/Core/Utils/textStyles.dart';
 
 class Rowinfo extends StatelessWidget {
-  Rowinfo({super.key, required this.title, required this.value, this.isSpaced});
+  Rowinfo(
+      {super.key,
+      required this.title,
+      this.valueColor,
+      required this.value,
+      this.isSpaced});
   final String title;
   final String value;
+  Color? valueColor;
   bool? isSpaced;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,8 @@ class Rowinfo extends StatelessWidget {
               ),
         Text(
           value,
-          style: textStyles.textstyle13.copyWith(color: Colors.black),
+          style: textStyles.textstyle13
+              .copyWith(color: valueColor ?? Colors.black),
         ),
       ],
     );

@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore: ^5.4.4
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
+  dropdown_button2: ^2.3.9
   expansion_widget: ^0.1.0
   firebase_core: ^3.6.0
   firebase_storage: ^12.3.3

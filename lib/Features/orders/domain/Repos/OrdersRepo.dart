@@ -5,5 +5,6 @@ import 'package:fruits_hub_dashboard/Core/errors/customFailure.dart';
 import 'package:fruits_hub_dashboard/Features/orders/domain/Entities/OrderEntity.dart';
 
 abstract class OrdersRepo {
-  Future<Either<Failures, List<OrderEntity>>> getOrders();
+  Future<Either<Failures, void>> updateOrderStatus(
+      {required String status, required OrderEntity order});
 }

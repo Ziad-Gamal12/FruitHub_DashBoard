@@ -129,4 +129,83 @@ class FirebaseFirestoreservices implements Cloudstoreservices {
       }
     }
   }
+
+  @override
+  Future<void> updateDate({
+    required String collectionKey,
+    required doc,
+    required dynamic data,
+    required String field,
+  }) async {
+    try {
+      await fireStore.collection(collectionKey).doc(doc).update({field: data});
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
+        throw Customexciption(
+            message:
+                "🚨 ليس لديك الإذن اللازم لإضافة البيانات. يرجى مراجعة صلاحياتك أو تعديل قواعد الأمان في Firestore.");
+      } else if (e.code == "unavailable") {
+        throw Customexciption(
+            message: "🚨 الخادم غير متوفر حاليا. يرجى المحاولة لاحقا.");
+      } else if (e.code == "invalid-argument") {
+        throw Customexciption(
+            message:
+                "❌ تم تمرير بيانات غير صحيحة. يرجى التحقق من المدخلات وإعادة المحاولة.");
+      } else if (e.code == "deadline-exceeded") {
+        throw Customexciption(
+            message:
+                "⏳ انتهت المهلة الزمنية للطلب. يرجى المحاولة مرة أخرى لاحقًا.");
+      } else if (e.code == "resource-exhausted") {
+        throw Customexciption(
+            message: "🚨 استهلاك الحافزات المتاحة. يرجى المحاولة لاحقًا.");
+      } else {
+        throw Customexciption(message: "حدث خطأ ما");
+      }
+    } catch (e) {
+      throw Customexciption(message: "حدث خطأ ما");
+    }
+  }
+
+  @override
+  Future<Stream<QuerySnapshot<Object?>>> getQueryStream(
+      {required FireStoreRequirmentsEntity requirements}) async {
+    try {
+      if (requirements.collection != null) {
+        final CollectionReference<Map<String, dynamic>> currentCollection =
+            fireStore.collection(requirements.collection!);
+        return currentCollection.snapshots();
+      } else {
+        throw Customexciption(message: "collection is null");
+      }
+    } on FirebaseException catch (e) {
+      switch (e.code) {
+        case 'permission-denied':
+          throw Customexciption(
+            message:
+                "🚨 ليس لديك الإذن اللازم للوصول إلى البيانات. يرجى مراجعة صلاحياتك.",
+          );
+        case 'unavailable':
+          throw Customexciption(
+            message: "🚨 الخادم غير متوفر حاليا. حاول مرة أخرى لاحقا.",
+          );
+        case 'invalid-argument':
+          throw Customexciption(
+            message:
+                "❌ تم تمرير بيانات غير صحيحة. تأكد من المدخلات وحاول مجددًا.",
+          );
+        case 'deadline-exceeded':
+          throw Customexciption(
+            message: "⏳ انتهت المهلة الزمنية للطلب. حاول مرة أخرى.",
+          );
+        case 'resource-exhausted':
+          throw Customexciption(
+            message: "🚨 تم استهلاك الموارد المتاحة. يرجى المحاولة لاحقًا.",
+          );
+        default:
+          throw Customexciption(message: "❌ حدث خطأ غير متوقع.");
+      }
+    } catch (e) {
+      throw Customexciption(message: "❌ حدث خطاء غير متوقع.");
+    }
+  }
 }
