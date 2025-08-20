@@ -20,7 +20,7 @@ The dashboard integrates with **Firebase** for seamless data management and orde
 - **State Management** – Bloc / Cubit  
 - **Clean Architecture** – Organized and scalable structure  
 - **Firebase Firestore** – Real-time product & order management  
-- **Firebase Storage** – Store product images  
+- **Supabase Storage** – Store product images  
 - **Firebase Authentication** – Secure admin access  
 - **GoRouter** – Simple navigation between screens  
 
